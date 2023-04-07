@@ -17,6 +17,7 @@ class FivelyEcommerce extends StatelessWidget {
       title: 'Fively ECommerce',
       theme: ThemeData(
         inputDecorationTheme: InputDecorationTheme(
+          errorStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.red),
           filled: true,
           fillColor: Colors.white,
           labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black54),
@@ -24,6 +25,18 @@ class FivelyEcommerce extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
             borderSide: const BorderSide(
               color: Colors.grey
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide:const BorderSide(
+              color: Colors.red
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide:const BorderSide(
+              color: Colors.red
             ),
           ),
           disabledBorder: OutlineInputBorder(
