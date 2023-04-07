@@ -1,3 +1,5 @@
+import 'package:fively_ecommerce/utilities/router.dart';
+import 'package:fively_ecommerce/utilities/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,10 +13,37 @@ class FivelyEcommerce extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Fively ECommerce',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: Colors.white,
+          labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black54),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: const BorderSide(
+              color: Colors.grey
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: const BorderSide(
+              color: Colors.grey
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: const BorderSide(
+              color: Colors.grey
+            ),
+          ),
+        ),
+        scaffoldBackgroundColor: const Color(0xffE5E5E5),
+        primaryColor: const Color(0xffDB3022)
       ),
+      onGenerateRoute: onGenerateRoutes,
+      initialRoute: AppRoutes.authPageRouteName,
     );
   }
 }
