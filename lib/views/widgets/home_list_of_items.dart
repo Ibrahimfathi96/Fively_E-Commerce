@@ -16,12 +16,8 @@ class HomeListOfItems extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(
-                  product.imageUrl,
-                  height: 200,
-                  width: 200,
-                  fit: BoxFit.cover
-                ),
+                child: Image.asset(product.imageUrl,
+                    height: 200, width: 200, fit: BoxFit.cover),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -67,10 +63,26 @@ class HomeListOfItems extends StatelessWidget {
           const SizedBox(
             height: 6,
           ),
-          Text(
-            '${product.price}\$',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Theme.of(context).primaryColor, fontWeight: FontWeight.w500, fontSize: 18),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: '${product.price}\$',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.lineThrough,
+                      fontSize: 18),
+                ),
+                TextSpan(
+                  text: '   ${product.price * (product.discountValue) / 100}\$',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                ),
+              ],
+            ),
           ),
         ],
       ),

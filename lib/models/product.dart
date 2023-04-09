@@ -6,7 +6,7 @@ class Product {
   final String upperTitle;
   final double price;
   final String imageUrl;
-  final int? discountValue;
+  final int discountValue;
   final double? rating;
   final String category;
 
@@ -16,7 +16,7 @@ class Product {
       required this.upperTitle,
       required this.price,
       required this.imageUrl,
-      this.discountValue,
+      this.discountValue = 0,
       this.rating,
       this.category = 'Others'});
 
