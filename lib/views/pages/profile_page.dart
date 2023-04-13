@@ -24,6 +24,7 @@ class ProfilePage extends StatelessWidget {
       Consumer<AuthController>(
         builder: (_, model, __) =>
             Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Spacer(),
                 Padding(

@@ -28,22 +28,31 @@ class _AuthPageState extends State<AuthPage> {
     super.dispose();
   }
 
-  Future<void> _submit(AuthController model)async{
-    try{
+  Future<void> _submit(AuthController model) async {
+    try {
       await model.submit();
-      if(!mounted) return;
+      if (!mounted) return;
       Navigator.of(context).pushNamed(AppRoutes.landingPageRouteName);
-    }catch(ex){
-      showDialog(context: context, builder: (context) =>AlertDialog(
-        title: Text('Error!',style: Theme.of(context).textTheme.headlineSmall,),
-        content: Text(ex.toString(),style: Theme.of(context).textTheme.titleMedium,),
-        actions: [
-          TextButton(
-              onPressed: ()=> Navigator.of(context).pop(),
-              child: const Text('OK'),
+    } catch (ex) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(
+            'Error!',
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
-        ],
-      ) ,);
+          content: Text(
+            ex.toString(),
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
@@ -55,8 +64,7 @@ class _AuthPageState extends State<AuthPage> {
           resizeToAvoidBottomInset: true,
           body: SafeArea(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 46, horizontal: 32),
+              padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 32),
               child: Form(
                 key: _formKey,
                 child: SingleChildScrollView(
@@ -77,27 +85,6 @@ class _AuthPageState extends State<AuthPage> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.15,
                       ),
-                      // const SizedBox(
-                      //   height: 100,
-                      // ),
-                      // if (model.authFormType == AuthFormType.register)
-                      //   TextFormField(
-                      //     textInputAction: TextInputAction.next,
-                      //     onEditingComplete: () => FocusScope.of(context)
-                      //         .requestFocus(_emailFocusNode),
-                      //     focusNode: _nameFocusNode,
-                      //     controller: _nameController,
-                      //     validator: (value) => value!.isNotEmpty
-                      //         ? "Please enter your Name"
-                      //         : null,
-                      //     decoration: const InputDecoration(
-                      //       labelText: 'Name',
-                      //       hintText: 'Enter your name',
-                      //     ),
-                      //   ),
-                      // const SizedBox(
-                      //   height: 24,
-                      // ),
                       TextFormField(
                         onChanged: model.updateEmail,
                         textInputAction: TextInputAction.next,
@@ -165,10 +152,16 @@ class _AuthPageState extends State<AuthPage> {
                         ),
                         onTap: () {
                           _formKey.currentState!.reset();
+                          _emailController.text = '';
+                          _passwordController.text = '';
+                          _emailController.clear();
+                          _passwordController.clear();
                           model.toggleFormType();
                         },
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.15,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.15,
+                      ),
                       Text(
                         model.authFormType == AuthFormType.login
                             ? 'or Login with'

@@ -3,7 +3,6 @@ import 'package:fively_ecommerce/controllers/auth_controller.dart';
 import 'package:fively_ecommerce/services/auth.dart';
 import 'package:fively_ecommerce/views/pages/auth_page.dart';
 import 'package:fively_ecommerce/views/pages/bottom_nav_bar.dart';
-import 'package:fively_ecommerce/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
