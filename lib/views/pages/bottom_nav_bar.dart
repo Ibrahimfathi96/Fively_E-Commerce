@@ -1,3 +1,4 @@
+import 'package:fively_ecommerce/views/pages/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -20,7 +21,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       Container(color: Colors.red,),
       Container(color: Colors.blueAccent,),
       Container(color: Colors.greenAccent,),
-      Container(color: Colors.orangeAccent,),
+      const ProfilePage(),
     ];
   }
 

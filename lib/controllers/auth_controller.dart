@@ -48,5 +48,11 @@ class AuthController with ChangeNotifier {
     );
   }
 
-
+  Future<void> logout() async {
+    try {
+      await authBase.userLogout();
+    } catch (ex) {
+      rethrow;
+    }
+  }
 }

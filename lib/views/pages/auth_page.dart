@@ -32,7 +32,7 @@ class _AuthPageState extends State<AuthPage> {
     try{
       await model.submit();
       if(!mounted) return;
-      Navigator.of(context).pushNamed(AppRoutes.bottomNavBarRouteName);
+      Navigator.of(context).pushNamed(AppRoutes.landingPageRouteName);
     }catch(ex){
       showDialog(context: context, builder: (context) =>AlertDialog(
         title: Text('Error!',style: Theme.of(context).textTheme.headlineSmall,),
