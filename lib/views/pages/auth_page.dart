@@ -1,6 +1,5 @@
 import 'package:fively_ecommerce/controllers/auth_controller.dart';
 import 'package:fively_ecommerce/utilities/enums.dart';
-import 'package:fively_ecommerce/utilities/routes.dart';
 import 'package:fively_ecommerce/views/widgets/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +31,7 @@ class _AuthPageState extends State<AuthPage> {
     try {
       await model.submit();
       if (!mounted) return;
-      Navigator.of(context).pushNamed(AppRoutes.landingPageRouteName);
+      // Navigator.of(context).pushNamed(AppRoutes.landingPageRouteName);
     } catch (ex) {
       showDialog(
         context: context,
@@ -104,6 +103,7 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                       TextFormField(
                         onChanged: model.updatePassword,
+                        obscureText: true,
                         textInputAction: TextInputAction.done,
                         focusNode: _passwordFocusNode,
                         validator: (value) => value!.isEmpty

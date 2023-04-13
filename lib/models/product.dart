@@ -20,6 +20,31 @@ class Product {
       this.rating,
       this.category = 'Others'});
 
+  factory Product.fromJson(Map<String, dynamic> json,String documentId) {
+    return Product(
+      id: documentId,
+      title: json["title"],
+      upperTitle: json["upperTitle"],
+      price: double.parse(json["price"]),
+      imageUrl: json["imageUrl"],
+      discountValue: int.parse(json["discountValue"]),
+      rating: double.parse(json["rating"]),
+      category: json["category"],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": this.id,
+      "title": this.title,
+      "upperTitle": this.upperTitle,
+      "price": this.price,
+      "imageUrl": this.imageUrl,
+      "discountValue": this.discountValue,
+      "rating": this.rating,
+      "category": this.category,
+    };
+  }
 }
 List<Product> dummyProducts = [
   Product(id: '1', title: 'Evening Dress', upperTitle: 'Dorothy Perkins', price: 300, imageUrl: AppAssets.item1,discountValue: 20),
