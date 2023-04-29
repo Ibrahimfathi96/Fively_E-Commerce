@@ -143,13 +143,30 @@ class _AuthPageState extends State<AuthPage> {
                         height: 16,
                       ),
                       InkWell(
-                        child: Text(
-                          model.authFormType == AuthFormType.login
-                              ? 'Don\'t have an account? Register'
-                              : 'Already have an account?',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
+                        child: model.authFormType == AuthFormType.login
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Don\'t have an account?',
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
+                                  const SizedBox(width: 5,),
+                                  Text(
+                                    'Register',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(color: Colors.lightBlue[900]),
+                                  ),
+                                ],
+                              )
+                            : Text(
+                                'Already have an account?',
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
                         onTap: () {
                           _formKey.currentState!.reset();
                           _emailController.text = '';

@@ -23,24 +23,27 @@ class FireStoreServices {
     await reference.delete();
   }
 
+  //stream of collections inside a document
   Stream<T> documentsStream<T>(
       {required String path,
-      required T Function(Map<String, dynamic>? data, String documentId)
-          builder}) {
+      required T Function(Map<String, dynamic>? data, String documentId) builder
+      }) {
     final reference = _fireStore.doc(path);
     final snapShots = reference.snapshots();
     return snapShots.map((snapshot) => builder(snapshot.data(), snapshot.id));
   }
 
+  //stream of documents inside a collection
   Stream<List<T>> collectionsStream<T>({
     required String path,
     required T Function(Map<String, dynamic>? data, String documentId) builder,
-    /*query parameter*/
+    ///query parameter or filter
     Query Function(Query query)? queryBuilder,
-    /*sorting parameter*/
+    ///sorting parameter
     int Function(T lhs, T rhs)? sort,
   }) {
     Query query = _fireStore.collection(path);
+    //if there is an user's query
     if (queryBuilder != null) {
       query = queryBuilder(query);
     }
